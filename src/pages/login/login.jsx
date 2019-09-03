@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button,message } from 'antd';
 
-import { saveUser } from "../../Untils/storageUntils";
-import memoryUntils from "../../Untils/memoryUntils";
+import { saveUser } from "../../Utils/storageUtils";
+import memoryUtils from "../../Utils/memoryUtils";
 import {reqLogin} from "../../api";
 import "./login.less";
-import logo from "./images/logo.png";
+import logo from "../../assets/images/logo.png";
 class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
@@ -17,7 +17,8 @@ class Login extends Component {
         if(result.status === 0){
           const user = result.data
           saveUser(user)
-          memoryUntils.user = user
+          //性能优化，只从文件中读取一次，以后就在内存中读取
+          memoryUtils.user = user
           this.props.history.replace('/')
         }else{
           message.error(result.msg)
@@ -42,7 +43,7 @@ class Login extends Component {
     }
   }
   render() {
-    const user = memoryUntils.user
+    const user = memoryUtils.user
     if (user._id) {
       return <Redirect to='/'></Redirect>
     }

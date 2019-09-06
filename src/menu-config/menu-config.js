@@ -2,11 +2,12 @@ const menuList = [
   {
     title:'首页',
     key:'/home',
-    type:'home'
+    type:'home',
+    isPublic:true
   },
   {
     title: '商品',
-    key: 'sub',
+    key: '/products',
     type: 'codepen-circle',
     children:[
       {
@@ -33,7 +34,7 @@ const menuList = [
   },
   {
     title: '图形图标',
-    key: 'charts',
+    key: '/charts',
     type: 'area-chart',
     children:[
       {

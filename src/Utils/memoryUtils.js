@@ -1,5 +1,6 @@
 import { getUser } from "./storageUtils";
 
 export default {
-  user: getUser()
+  user: getUser(),
+  product:{}
 }
